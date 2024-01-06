@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+        #body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 50px;
+        }
+
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        body {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+
+        .svg-container {
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+            position: relative;
+        }
+
+        .svg-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .svg-container {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        svg {
+            border: 1px solid #ddd;
+            position: absolute;
+            width: 1994px;
+            height: 1282.74px;
+        }
+
+        .whole_back {
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .point {
+            fill: #f7a930;
+            cursor: pointer;
+            stroke-width: 15;
+            stroke: transparent;
+        }
+
+        .sl {
+            color: white;
+        }
+
+        #contMain {
+            width: 100vw;
+            height: 90vh;
+            /* min-height: 700px; */
+            display: grid;
+            grid-template-rows: 1fr;
+            grid-template-columns: 70% 30%;
+        }
+
+        #infoBox {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            margin-top: 20%;
+            padding: 0 10%;
+        }
+
+        #infoBox * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #infoBox h1 {
+            font-size: 2.5rem;
+            font-weight: bolder;
+            color: #2eb74c;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+
+        #infoBox h1,
+        #infoBox p {
+            padding: 0 12%;
+        }
+
+        #infoBox p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        #boxIn {
+            border-left: 45px solid #e36e42;
+            border-right: 45px solid #e36e42;
+            border-width: 0 20%;
+        }
+
+
+        #airline_info {
+            display: grid;
+            grid-template-columns: 0.3fr 1.7fr;
+            grid-template-rows: 1fr;
+            border-bottom: 2px solid #dfdfdf;
+            padding: 15px 10%;
+            align-items: center;
+            justify-items: center;
+        }
+
+        #instruction {
+            border-top: 2px solid #dfdfdf;
+            font-size: 2rem;
+            color: #e36e42;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        #instruction2 {
+            font-size: 1.3rem;
+            color: #414966;
+            text-align: center;
+            margin-top: 5px;
+        }
+
+        #instruction3 {
+            text-align: center;
+        }
+
+        .airline_logo {
+            width: 70px;
+            border-radius: 100%;
+        }
+
+        @media only screen and (max-width: 1300px) {
+            #instruction3 {
+                font-size: 1.3rem;
+            }
+
+            #instruction2 {
+                font-size: 1rem;
+            }
+
+            #instruction {
+                font-size: 1.5rem;
+            }
+        }
+
+
+
+    </style>
+    <title>SVG Line Generator</title>
+</head>
+
+<body>
+
+    <section id="body">
+        <div id="contMain">
+
+            <div class="svg-container" id="svgContainer">
+                <svg id="svgCanvas" onclick="getPointCoordinates(event), getPointCoordinates2(event)">
+                    <image class="whole_back" href="world-map-sl-marking 1.png" width="1994" height="1282.72" />
+                    <!-- Image at the fixed point (206, 207) -->
+                    <!-- <image xlink:href="https://cdn.pixabay.com/photo/2013/07/12/17/00/location-151669_1280.png" x="190"
+                        y="177" width="32" height="32" /> -->
+                    <circle class="point" cx="999.39" cy="581.6" r="5" id="point1" data-name="London"
+                        data-duration="4 Hours" data-airline="Adnan Airways" />
+                    <circle class="point" cx="597.6" cy="661.6" r="5" id="point2" data-name="New York"
+                        data-duration="4 Hours" data-airline="Murtaza Jetways" />
+                    <circle class="point" cx="1017.6" cy="586.4" r="5" id="point3" data-name="Brussels"
+                        data-duration="6 Hours" data-airline="Karyana Airlines" />
+                    <circle class="point" cx="959.6" cy="730.6" r="5" id="point4" data-name="Marrakech"
+                        data-duration="8 Hours" data-airline="Jet Mubarak" />
+                    <circle class="point inits" cx="1158.4" cy="664.6" r="5" id="point5" data-name="Istanbul"
+                        data-duration="2 Hours" data-airline="Emirates" />
+                    <circle class="point" cx="903.6" cy="831.39" r="5" id="point5" data-name="Dakar"
+                        data-duration="2 Hours" data-airline="Mubaraka Airways" />
+                    <circle class="point" cx="1209" cy="882.6" r="5" id="point4" data-name="Addis Ababa"
+                        data-duration="8 Hours" data-airline="Air Adnan" />
+                    <circle class="point" cx="1192" cy="922.4" r="5" id="point5" data-name="Nairobi"
+                        data-duration="2 Hours" data-airline="Design Air" />
+                    <circle class="point" cx="1004.4" cy="876.6" r="5" id="point5" data-name="Lome"
+                        data-duration="2 Hours" data-airline="Emirates7" />
+
+                    <!-- Background rectangles for each text element with rounded corners -->
+                    <rect x="913.39" y="547" width="80" height="30" rx="5" ry="5" fill="#fdee00" id="londonRect" />
+                    <rect x="607.6" y="651.6" width="95" height="30" rx="5" ry="5" fill="#fdee00" id="newYorkRect" />
+                    <rect x="1027.6" y="556.4" width="80" height="30" rx="5" ry="5" fill="#fdee00" id="brusselsRect" />
+                    <rect x="854.6" y="698.2" width="95" height="30" rx="5" ry="5" fill="#fdee00" id="marrakechRect" />
+                    <rect x="1164.4" y="630.6" width="80" height="30" rx="5" ry="5" fill="#fdee00" id="istanbulRect" />
+                    <rect x="823.6" y="801.39" width="70" height="30" rx="5" ry="5" fill="#fdee00" id="dakarRect" />
+                    <rect x="1219" y="846.6" width="120" height="30" rx="5" ry="5" fill="#fdee00" id="addisAbabaRect" />
+                    <rect x="1112" y="886.4" width="80" height="30" rx="5" ry="5" fill="#fdee00" id="nairobiRect" />
+                    <rect x="1009.4" y="838.6" width="70" height="30" rx="5" ry="5" fill="#fdee00" id="lomeRect" />
+                    <rect x="795" y="853.39" width="120" height="30" rx="5" ry="5" fill="#66b5ef"
+                        id="sierraLeoneRect" />
+
+                    <!-- Text elements -->
+                    <text x="923.39" y="567" class="point-label">London</text>
+                    <text x="618.6" y="671.6" class="point-label">New York</text>
+                    <text x="1035.6" y="577.4" class="point-label">Brussels</text>
+                    <text x="860.6" y="718.2" class="point-label">Marrakech</text>
+                    <text x="1172.4" y="650.6" class="point-label">Istanbul</text>
+                    <text x="836.6" y="821.39" class="point-label">Dakar</text>
+                    <text x="1229" y="866.6" class="point-label">Addis Ababa</text>
+                    <text x="1122" y="906.4" class="point-label">Nairobi</text>
+                    <text x="1022.4" y="858.6" class="point-label">Lome</text>
+                    <text x="806" y="873.39" class="point-label sl" fill="#ffffff">Sierra Leone</text>
+
+
+                </svg>
+            </div>
+
+            <div id="infoBox">
+                <h1>FLIGHTS</h1>
+                <p>With daily flights from many cities across the World, travel to Sierra Leone is easier than you
+                    would
+                    imagine</p>
+
+                <div id="boxIn">
+                    <h2 id="instruction">Departure</h2>
+                    <h2 id="instruction2">Getting Here</h2>
+                    <div id="airline_info">
+                        <img src="placeholder.jpg" alt="airline-logo" class="airline_logo">
+                        <h2 id="instruction3">Mubaraka Airlines</h2>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <script>
+            const svgContainer = document.getElementById('svgContainer');
+            let isDown = false;
+            let startX;
+            let startY;
+            let scrollLeft;
+            let scrollTop;
+
+            document.addEventListener('DOMContentLoaded', () => {
+                // customize initial map view position (adjust these values as needed)
+                svgContainer.scrollLeft = 465; // Example: horizontal scroll position
+                svgContainer.scrollTop = 320; // Example: vertical scroll position
+            });
+
+            //prevents scrolling in the map
+
+            // svgContainer.addEventListener('wheel', function (event) {
+            //     event.preventDefault();
+            // });
+
+            svgContainer.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - svgContainer.offsetLeft;
+                startY = e.pageY - svgContainer.offsetTop;
+                scrollLeft = svgContainer.scrollLeft;
+                scrollTop = svgContainer.scrollTop;
+                svgContainer.style.cursor = 'grabbing';
+            });
+
+            svgContainer.addEventListener('mouseleave', () => {
+                isDown = false;
+                svgContainer.style.cursor = 'grab';
+            });
+
+            svgContainer.addEventListener('mouseup', () => {
+                isDown = false;
+                svgContainer.style.cursor = 'grab';
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - svgContainer.offsetLeft;
+                const y = e.pageY - svgContainer.offsetTop;
+                const walkX = (x - startX) * 1; // Change this number to adjust the scroll speed
+                const walkY = (y - startY) * 1; // Change this number to adjust the scroll speed
+                svgContainer.scrollLeft = scrollLeft - walkX;
+                svgContainer.scrollTop = scrollTop - walkY;
+            });
+
+            let selectedPoint;
+
+            function getPointCoordinates(event) {
+                const clickedPoint = event.target;
+
+                if (clickedPoint.classList.contains("point")) {
+                    const x1 = parseFloat(clickedPoint.getAttribute("cx"));
+                    const y1 = parseFloat(clickedPoint.getAttribute("cy"));
+
+                    // Freetown Location Fixed
+                    const x2 = 932.7;
+                    const y2 = 867.4;
+
+                    // Draw a line between the selected point and the fixed point
+                    animatePlaneFollowLine(x1, y1, x2, y2);
+
+                    // Display the name of the currently selected point
+                    document.getElementById("instruction").textContent =
+                        `${clickedPoint.getAttribute("data-name")}`.toUpperCase();
+                    document.getElementById("instruction2").textContent =
+                        `${clickedPoint.getAttribute("data-duration")}`.toUpperCase();
+                    document.getElementById("instruction3").textContent =
+                        `${clickedPoint.getAttribute("data-airline")}`.toUpperCase();
+                }
+            }
+
+
+            function animatePlaneFollowLine(x1, y1, x2, y2) {
+                const svgCanvas = document.getElementById("svgCanvas");
+
+                // Remove previous line and plane
+                const previousLine = document.getElementById("line");
+                const previousPlane = document.getElementById("plane");
+                if (previousLine) {
+                    svgCanvas.removeChild(previousLine);
+                }
+                if (previousPlane) {
+                    svgCanvas.removeChild(previousPlane);
+                }
+
+
+                const cx1 = x1 + (x2 - x1) * 0.25;
+                const cy1 = y1 - 50;
+                const cx2 = x1 + (x2 - x1) * 0.75;
+                const cy2 = y2 - 50;
+
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", `M${x1} ${y1} C${cx1} ${cy1}, ${cx2} ${cy2}, ${x2} ${y2}`);
+                path.setAttribute("stroke", "#f7a930");
+                path.setAttribute("stroke-width", "2");
+                path.setAttribute("fill", "none");
+                path.setAttribute("stroke-dasharray", "5,5");
+                path.setAttribute("id", "line");
+
+                svgCanvas.appendChild(path);
+
+                const plane = document.createElementNS("http://www.w3.org/2000/svg", "image");
+                plane.setAttribute("href", "plane.png");
+                plane.setAttribute("width", "50");
+                plane.setAttribute("height", "50");
+                plane.setAttribute("id", "plane");
+
+                svgCanvas.appendChild(plane);
+
+                let distance = 0;
+
+                function animate() {
+                    distance += 3; // Adjust the flight speed
+
+                    const point = path.getPointAtLength(distance);
+                    plane.setAttribute("x", point.x - 25);
+                    plane.setAttribute("y", point.y - 25);
+
+                    // Calculate the angle between the line and the x-axis
+                    const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
+                    plane.setAttribute("transform", `rotate(${angle} ${point.x} ${point.y})`);
+
+                    if (distance < path.getTotalLength()) {
+                        requestAnimationFrame(animate);
+                    }
+                }
+
+                requestAnimationFrame(animate);
+            }
+
+            //When Adding new points, enable the following function to get point coordinates.
+            function getPointCoordinates2(event) {
+                // const svgCanvas = document.getElementById("svgCanvas");
+                // const x = event.clientX - svgCanvas.getBoundingClientRect().left;
+                // const y = event.clientY - svgCanvas.getBoundingClientRect().top;
+
+                // console.log(`Clicked Point Coordinates: x = ${x}, y = ${y}`);
+            }
+        </script>
+    </section>
+
+</body>
+
+</html>
