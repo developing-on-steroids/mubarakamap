@@ -153,6 +153,10 @@
         }
 
         @media only screen and (max-width: 1300px) {
+            #body {
+                margin: 20px;
+            }
+
             #instruction3 {
                 font-size: 1.3rem;
             }
@@ -162,12 +166,109 @@
             }
 
             #instruction {
-                font-size: 1.5rem;
+                font-size: 1.7rem;
             }
         }
 
+        @media only screen and (max-width: 1200px) {
+
+            #contMain {
+                grid-template-rows: 70% 30%;
+                grid-template-columns: 1fr;
+                /* padding: 0 50px; */
+                width: auto;
+            }
+
+            #svgCanvas {
+                transform: scale(0.9);
+            }
+
+            #boxIn {
+                margin: 0 5%;
+            }
+
+            #infoBox {
+                margin-top: 55px;
+                padding: 0%;
+                flex-direction: row;
+                display: grid;
+                grid-template-columns: 1fr 0.1fr 1fr;
+                grid-template-rows: 1fr 1fr;
+                align-items: center;
+                gap: 0px 0px;
+                grid-auto-flow: row;
+                grid-template-areas:
+                    "inh inh boxIn"
+                    "inp inp boxIn";
+            }
+
+            #inh {
+                grid-area: inh;
+                align-items: end;
+                display: grid;
+                height: 100%;
+            }
+
+            #infoBox h1 {
+                font-size: 2rem;
+            }
+
+            #inp {
+                grid-area: inp;
+            }
+
+            #boxIn {
+                grid-area: boxIn;
+            }
 
 
+        }
+
+        @media only screen and (max-width: 700px) {
+            #infoBox {
+                display: flex;
+                flex-direction: column;
+                margin-top: 30px;
+            }
+
+            #contMain {
+                grid-template-rows: 60% 40%;
+            }
+
+            #BoxIn {
+                padding: 0;
+            }
+
+        }
+
+        @media only screen and (min-width: 3000px) {
+
+            #infoBox {
+                margin-top: 50%;
+            }
+
+            #instruction3 {
+                font-size: 3.5rem;
+            }
+
+            #instruction2 {
+                font-size: 3.5rem;
+            }
+
+            #instruction {
+                font-size: 4rem;
+            }
+
+            #infoBox h1 {
+                font-size: 4.5rem;
+                margin-bottom: 20px;
+            }
+
+            #infoBox p {
+                font-size: 2.5rem;
+                margin-bottom: 50px;
+            }
+        }
     </style>
     <title>SVG Line Generator</title>
 </head>
@@ -232,8 +333,9 @@
             </div>
 
             <div id="infoBox">
-                <h1>FLIGHTS</h1>
-                <p>With daily flights from many cities across the World, travel to Sierra Leone is easier than you
+                <h1 id="inh">FLIGHTS</h1>
+                <p id="inp">With daily flights from many cities across the World, travel to Sierra Leone is easier than
+                    you
                     would
                     imagine</p>
 
@@ -258,9 +360,62 @@
             let scrollTop;
 
             document.addEventListener('DOMContentLoaded', () => {
+
+                var imageElement = document.querySelector('#svgCanvas');
+
+                var baseWidth = 1994;
+                var baseHeight = 1282.72;
+
+                var viewportWidth = window.innerWidth;
+                var viewportHeight = window.innerHeight;
+
                 // customize initial map view position (adjust these values as needed)
                 svgContainer.scrollLeft = 465; // Example: horizontal scroll position
-                svgContainer.scrollTop = 320; // Example: vertical scroll position
+                svgContainer.scrollTop = 420; // Example: vertical scroll position
+
+                if (viewportWidth >= 3300 && viewportHeight >= 2100) {
+                    imageElement.setAttribute('transform', 'scale(2)');
+                }
+
+                if (viewportWidth <= 1200) {
+                    // customize initial map view position (adjust these values as needed)
+                    svgContainer.scrollLeft = 580; // Example: horizontal scroll position
+                    svgContainer.scrollTop = 520; // Example: vertical scroll position
+
+                }
+
+                if (viewportWidth <= 700) {
+                    // customize initial map view position (adjust these values as needed)
+                    svgContainer.scrollLeft = 660; // Example: horizontal scroll position
+                    svgContainer.scrollTop = 520; // Example: vertical scroll position
+
+                }
+            });
+
+            addEventListener("resize", (event) => {
+                var imageElement = document.querySelector('#svgCanvas');
+
+                var baseWidth = 1994;
+                var baseHeight = 1282.72;
+
+                var viewportWidth = window.innerWidth;
+                var viewportHeight = window.innerHeight;
+
+                if (viewportWidth >= 3300 && viewportHeight >= 2100) {
+                    imageElement.setAttribute('transform', 'scale(2)');
+                }
+
+                if (viewportWidth <= 2000 && viewportHeight <= 1000) {
+                    imageElement.setAttribute('transform', 'scale(1)');
+                    svgContainer.scrollLeft = 465;
+                    svgContainer.scrollTop = 420;
+                }
+                if (viewportWidth <= 1200) {
+                    // customize initial map view position (adjust these values as needed)
+                    svgContainer.scrollLeft = 580; // Example: horizontal scroll position
+                    svgContainer.scrollTop = 520; // Example: vertical scroll position
+
+                }
             });
 
             //prevents scrolling in the map
