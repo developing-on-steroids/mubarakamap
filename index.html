@@ -292,7 +292,8 @@
 <body>
 
     <section id="body">
-        <p class="close" onclick="removePreviousLine('line', 'plane', 'line-text'), clearName()">&#128260;</p>
+        <p class="close" onclick="removePreviousLine('line', 'plane', 'line-text', 'circle2'), clearName()">&#128260;
+        </p>
         <div id="contMain">
             <div class="svg-container" id="svgContainer">
                 <svg id="svgCanvas" onclick="getPointCoordinates2(event)">
@@ -549,7 +550,7 @@
             const x2 = 932.7;
             const y2 = 867.4;
 
-            removePreviousLine("plane", "line", 'line-text');
+            removePreviousLine("plane", "line", 'line-text', 'circle2');
             durationText = `${clickedPoint.getAttribute("data-duration")}`.toUpperCase();
 
             if (clickedPoint.getAttribute("data-connection") == 'true') {
@@ -704,27 +705,48 @@
 
             svgCanvas.appendChild(path);
 
+            const midPoint = path.getPointAtLength(path.getTotalLength() / 2);
+
             // Create the text element
             const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-            text.setAttribute("x", (x1 + x2) / 2);
-            text.setAttribute("y", (y1 + y2) / 2);
+            text.setAttribute("x", midPoint.x + 2);
+            text.setAttribute("y", midPoint.y - 6);
             text.setAttribute("text-anchor", "middle");
             text.setAttribute("dominant-baseline", "middle");
-            text.setAttribute("fill", "black");
+            text.setAttribute("fill", "white");
+            text.setAttribute("font-weight", "bold")
             text.setAttribute("paint-order", "stroke");
+            text.setAttribute("font-size", "13px")
 
             if (durationText.includes('<BR>')) {
                 if (rerun == true) {
-                    text.textContent = durationText.split('<BR>')[0].trim()
+                    text.innerHTML = formatTime(durationText.split('<BR>')[0].trim());
                 } else {
-                    text.textContent = durationText.split('<BR>')[1].trim()
+                    text.innerHTML = formatTime(durationText.split('<BR>')[1].trim());
                 }
             } else {
-                text.textContent = durationText;
+                text.innerHTML = formatTime(durationText);
             }
             text.setAttribute("class", "line-text");
 
             svgCanvas.appendChild(text);
+            var bbox = text.getBBox();
+
+
+
+            var width = bbox.width;
+            var height = bbox.height;
+
+            var svgNS = "http://www.w3.org/2000/svg";
+            var circle = document.createElementNS(svgNS, "circle");
+
+            // Set circle attributes
+            circle.setAttribute("cx", midPoint.x);
+            circle.setAttribute("cy", midPoint.y);
+            circle.setAttribute("r", height / 1.3);
+            circle.setAttribute("fill", "#f7a930");
+            circle.setAttribute('class', 'circle2')
+
 
             // Create the plane element
             const plane = document.createElementNS("http://www.w3.org/2000/svg", "image");
@@ -734,11 +756,13 @@
             plane.setAttribute("class", "plane");
 
             svgCanvas.appendChild(plane);
+            svgCanvas.appendChild(circle);
+            svgCanvas.appendChild(text);
 
             let distance = 0;
 
             function animate(callback) {
-                distance += 2; // Adjust the flight speed
+                distance += 10; // Adjust the flight speed
 
                 const point = path.getPointAtLength(distance);
                 plane.setAttribute("x", point.x - 25);
@@ -765,6 +789,45 @@
                     animatePlaneFollowLine(x2, y2, re1, re2);
                 }
             });
+        }
+
+
+        function formatTime(input) {
+            const match = input.match(/(\d+)\s*hours?\s*(\d+)?\s*mins?/i);
+
+            if (!match) {
+                const hoursOnlyMatch = input.match(/(\d+)\s*hours?/i);
+
+                if (!hoursOnlyMatch) {
+                    // Handle invalid input
+                    return 'Invalid input format';
+                }
+
+                const hoursOnly = parseInt(hoursOnlyMatch[1], 10) || 0;
+
+                const formattedTime = `${hoursOnly}:00`;
+
+
+                const svgText = `
+            <tspan dx=0 dy="0">${formattedTime}</tspan>
+            <tspan dx=-30 dy="1.2em">HRS</tspan>
+        `;
+
+                return svgText;
+            }
+
+
+            const hours = parseInt(match[1], 10) || 0;
+            const mins = parseInt(match[2], 10) || 0;
+
+            const formattedTime = `${hours}:${mins < 10 ? '0' : ''}${mins}`;
+
+            const svgText = `
+        <tspan dx=0 dy="0">${formattedTime}</tspan>
+        <tspan dx=-30 dy="1.2em">HRS</tspan>
+    `;
+
+            return svgText;
         }
 
 
