@@ -292,7 +292,7 @@
 <body>
 
     <section id="body">
-        <p class="close" onclick="removePreviousLine(), clearName()">&#128260;</p>
+        <p class="close" onclick="removePreviousLine('line', 'plane', 'line-text'), clearName()">&#128260;</p>
         <div id="contMain">
             <div class="svg-container" id="svgContainer">
                 <svg id="svgCanvas" onclick="getPointCoordinates2(event)">
@@ -300,77 +300,110 @@
                     <!-- Image at the fixed point (206, 207) -->
                     <!-- <image xlink:href="https://cdn.pixabay.com/photo/2013/07/12/17/00/location-151669_1280.png" x="190"
                         y="177" width="32" height="32" /> -->
+
+                    <!--------------------- London ---------------------->
+
                     <circle class="point" cx="999.39" cy="581.6" r="5" data-name="London" data-duration="4 Hours"
                         data-airline="Adnan Airways" data-connection=false id="london"
                         onclick="getPointCoordinates(event)" />
 
-                    <circle class="point" cx="597.6" cy="661.6" r="5" data-name="New York" data-duration="8 Hours <br> 4 hours 30 mins"
-                        data-airline="Murtaza Jetways" data-connection=true data-connecting="marrakech" id="newYork"
-                        onclick="getPointCoordinates(event)" />
+                    <rect x="913.39" y="547" width="80" height="30" rx="5" ry="5" fill="#fdee00"
+                        onclick="clickIt('london')" />
+
+                    <text x="923.39" y="567" class="point-label" onclick="clickIt('london')">London</text>
+
+                    <!--------------------- New York ---------------------->
+
+                    <circle class="point" cx="597.6" cy="661.6" r="5" data-name="New York"
+                        data-duration="8 Hours <br> 4 hours 30 mins" data-airline="Murtaza Jetways" data-connection=true
+                        data-connecting="marrakech" id="newYork" onclick="getPointCoordinates(event)" />
+
+                    <rect x="607.6" y="651.6" width="95" height="30" rx="5" ry="5" fill="#fdee00"
+                        onclick="clickIt('newYork')" />
+
+                    <text x="618.6" y="671.6" class="point-label" onclick="clickIt('newYork')">New York</text>
+
+                    <!--------------------- Brussels ---------------------->
 
                     <circle class="point" cx="1017.6" cy="586.4" r="5" data-name="Brussels" data-duration="6 Hours"
                         data-airline="Karyana Airlines" data-connection=false id="brussels"
                         onclick="getPointCoordinates(event)" />
 
+                    <rect x="1027.6" y="556.4" width="80" height="30" rx="5" ry="5" fill="#fdee00"
+                        onclick="clickIt('brussels')" />
+
+                    <text x="1035.6" y="577.4" class="point-label" onclick="clickIt('brussels')">Brussels</text>
+
+                    <!--------------------- Marrakech ---------------------->
+
                     <circle class="point" cx="959.6" cy="730.6" r="5" data-name="Marrakech" data-duration="8 Hours"
                         data-airline="Jet Mubarak" data-connection=false id="marrakech"
                         onclick="getPointCoordinates(event)" />
+
+                    <rect x="854.6" y="698.2" width="95" height="30" rx="5" ry="5" fill="#fdee00"
+                        onclick="clickIt('marrakech')" />
+
+                    <text x="860.6" y="718.2" class="point-label" onclick="clickIt('marrakech')">Marrakech</text>
+
+                    <!--------------------- Istanbul ---------------------->
 
                     <circle class="point" cx="1158.4" cy="664.6" r="5" data-name="Istanbul" data-duration="2 Hours"
                         data-airline="Emirates" data-connection=false id="istanbul"
                         onclick="getPointCoordinates(event)" />
 
+                    <rect x="1164.4" y="630.6" width="80" height="30" rx="5" ry="5" fill="#fdee00"
+                        onclick="clickIt('istanbul')" />
+
+                    <text x="1172.4" y="650.6" class="point-label" onclick="clickIt('istanbul')">Istanbul</text>
+
+                    <!--------------------- Dakar ---------------------->
+
                     <circle class="point" cx="903.6" cy="831.39" r="5" data-name="Dakar" data-duration="2 Hours"
                         data-airline="Mubaraka Airways" data-connection=false id="dakar"
                         onclick="getPointCoordinates(event)" />
+
+                    <rect x="823.6" y="801.39" width="70" height="30" rx="5" ry="5" fill="#fdee00"
+                        onclick="clickIt('dakar')" />
+
+                    <text x="836.6" y="821.39" class="point-label" onclick="clickIt('dakar')">Dakar</text>
+
+                    <!--------------------- Addis Ababa ---------------------->
 
                     <circle class="point" cx="1209" cy="882.6" r="5" data-name="Addis Ababa" data-duration="8 Hours"
                         data-airline="Air Adnan" data-connection=false id="addisAbaba"
                         onclick="getPointCoordinates(event)" />
 
+                    <rect x="1219" y="846.6" width="120" height="30" rx="5" ry="5" fill="#fdee00"
+                        onclick="clickIt('addisAbaba')" />
+
+                    <text x="1229" y="866.6" class="point-label" onclick="clickIt('addisAbaba')">Addis Ababa</text>
+
+                    <!--------------------- Nairobi ---------------------->
+
                     <circle class="point" cx="1192" cy="922.4" r="5" data-name="Nairobi" data-duration="2 Hours"
                         data-airline="Design Air" data-connection=false id="nairobi"
                         onclick="getPointCoordinates(event)" />
 
+                    <rect x="1112" y="886.4" width="80" height="30" rx="5" ry="5" fill="#fdee00"
+                        onclick="clickIt('nairobi')" />
+
+                    <text x="1122" y="906.4" class="point-label" onclick="clickIt('nairobi')">Nairobi</text>
+
+                    <!--------------------- Lome ---------------------->
+
                     <circle class="point" cx="1004.4" cy="876.6" r="5" data-name="Lome" data-duration="2 Hours"
                         data-airline="Emirates7" data-connection=false id="lome" onclick="getPointCoordinates(event)" />
 
-                    <!-- Background rectangles for each text element with rounded corners -->
-                    <rect x="913.39" y="547" width="80" height="30" rx="5" ry="5" fill="#fdee00"
-                        onclick="clickIt('london')" />
-                    <rect x="607.6" y="651.6" width="95" height="30" rx="5" ry="5" fill="#fdee00"
-                        onclick="clickIt('newYork')" />
-                    <rect x="1027.6" y="556.4" width="80" height="30" rx="5" ry="5" fill="#fdee00"
-                        onclick="clickIt('brussels')" />
-                    <rect x="854.6" y="698.2" width="95" height="30" rx="5" ry="5" fill="#fdee00"
-                        onclick="clickIt('marrakech')" />
-                    <rect x="1164.4" y="630.6" width="80" height="30" rx="5" ry="5" fill="#fdee00"
-                        onclick="clickIt('istanbul')" />
-                    <rect x="823.6" y="801.39" width="70" height="30" rx="5" ry="5" fill="#fdee00"
-                        onclick="clickIt('dakar')" />
-                    <rect x="1219" y="846.6" width="120" height="30" rx="5" ry="5" fill="#fdee00"
-                        onclick="clickIt('addisAbaba')" />
-                    <rect x="1112" y="886.4" width="80" height="30" rx="5" ry="5" fill="#fdee00"
-                        onclick="clickIt('nairobi')" />
                     <rect x="1009.4" y="838.6" width="70" height="30" rx="5" ry="5" fill="#fdee00"
                         onclick="clickIt('lome')" />
 
-                    <!-- sierraLeoneRect -->
+                    <text x="1022.4" y="858.6" class="point-label" onclick="clickIt('lome')">Lome</text>
+
+                    <!--------------------- Fixed Sierra Leone Point ---------------------->
+
                     <rect x="795" y="853.39" width="120" height="30" rx="5" ry="5" fill="#66b5ef"
                         id="sierraLeoneRect" />
 
-                    <!-- Text elements -->
-                    <text x="923.39" y="567" class="point-label" onclick="clickIt('london')">London</text>
-                    <text x="618.6" y="671.6" class="point-label" onclick="clickIt('newYork')">New York</text>
-                    <text x="1035.6" y="577.4" class="point-label" onclick="clickIt('brussels')">Brussels</text>
-                    <text x="860.6" y="718.2" class="point-label" onclick="clickIt('marrakech')">Marrakech</text>
-                    <text x="1172.4" y="650.6" class="point-label" onclick="clickIt('istanbul')">Istanbul</text>
-                    <text x="836.6" y="821.39" class="point-label" onclick="clickIt('dakar')">Dakar</text>
-                    <text x="1229" y="866.6" class="point-label" onclick="clickIt('addisAbaba')">Addis Ababa</text>
-                    <text x="1122" y="906.4" class="point-label" onclick="clickIt('nairobi')">Nairobi</text>
-                    <text x="1022.4" y="858.6" class="point-label" onclick="clickIt('lome')">Lome</text>
-
-                    <!-- sierraLeoneText -->
                     <text x="806" y="873.39" class="point-label sl" fill="#ffffff">Sierra Leone</text>
 
 
@@ -503,6 +536,7 @@
         });
 
         let selectedPoint;
+        let durationText
 
         function getPointCoordinates(event) {
             const clickedPoint = event.target;
@@ -514,6 +548,9 @@
             // Freetown Location Fixed
             const x2 = 932.7;
             const y2 = 867.4;
+
+            removePreviousLine("plane", "line", 'line-text');
+            durationText = `${clickedPoint.getAttribute("data-duration")}`.toUpperCase();
 
             if (clickedPoint.getAttribute("data-connection") == 'true') {
 
@@ -553,17 +590,22 @@
             document.getElementById("instruction4").style.width = "70px";
         }
 
-        function removePreviousLine() {
-            // Remove previous line and plane
-            const previousLine = document.getElementById("line");
-            const previousPlane = document.getElementById("plane");
-            if (previousLine) {
-                svgCanvas.removeChild(previousLine);
-            }
-            if (previousPlane) {
-                svgCanvas.removeChild(previousPlane);
-            }
+
+        function removePreviousLine(...classNames) {
+            classNames.forEach(className => {
+                const previousElements = document.getElementsByClassName(className);
+
+                // Convert HTMLCollection to an array for easier iteration
+                const elementsArray = Array.from(previousElements);
+
+                elementsArray.forEach(element => {
+                    svgCanvas.removeChild(element);
+                });
+            });
         }
+
+
+
 
         function clearName() {
 
@@ -576,10 +618,10 @@
 
         }
 
-        // function animatePlaneFollowLine(x1, y1, x2, y2, re1, re2) {
-        //     const svgCanvas = document.getElementById("svgCanvas");
 
-        //     removePreviousLine()
+        // function animatePlaneFollowLine(x1, y1, x2, y2, re1, re2) {
+
+        //     const svgCanvas = document.getElementById("svgCanvas");
 
         //     // Calculate control points for the Bezier curve
         //     const cx1 = x1 + (x2 - x1) * 0.25;
@@ -594,7 +636,7 @@
         //     path.setAttribute("stroke-width", "2");
         //     path.setAttribute("fill", "none");
         //     path.setAttribute("stroke-dasharray", "5,5");
-        //     path.setAttribute("id", "line");
+        //     path.setAttribute("class", "line");
 
         //     svgCanvas.appendChild(path);
 
@@ -603,13 +645,13 @@
         //     plane.setAttribute("href", "plane.png"); // change plane image
         //     plane.setAttribute("width", "50");
         //     plane.setAttribute("height", "50");
-        //     plane.setAttribute("id", "plane");
+        //     plane.setAttribute("class", "plane");
 
         //     svgCanvas.appendChild(plane);
 
         //     let distance = 0;
 
-        //     function animate() {
+        //     function animate(callback) {
         //         distance += 2; // Adjust the flight speed
 
         //         const point = path.getPointAtLength(distance);
@@ -621,16 +663,22 @@
         //         plane.setAttribute("transform", `rotate(${angle} ${point.x} ${point.y})`);
 
         //         if (distance < path.getTotalLength() - 30) { //end the flight path earlier
-        //             requestAnimationFrame(animate);
+        //             requestAnimationFrame(() => animate(callback));
+        //         } else {
+        //             // Animation completed, execute the callback
+        //             if (callback) {
+        //                 callback();
+        //             }
         //         }
         //     }
 
-        //     requestAnimationFrame(animate);
-
-        //     if (rerun == true) {
-        //         rerun = false
-        //         animatePlaneFollowLine(x2, y2, re1, re2);
-        //     }
+        //     animate(() => {
+        //         if (rerun == true) {
+        //             rerun = false;
+        //             removePreviousLine("plane");
+        //             animatePlaneFollowLine(x2, y2, re1, re2);
+        //         }
+        //     });
         // }
 
 
@@ -638,8 +686,6 @@
         function animatePlaneFollowLine(x1, y1, x2, y2, re1, re2) {
 
             const svgCanvas = document.getElementById("svgCanvas");
-
-            removePreviousLine();
 
             // Calculate control points for the Bezier curve
             const cx1 = x1 + (x2 - x1) * 0.25;
@@ -654,16 +700,38 @@
             path.setAttribute("stroke-width", "2");
             path.setAttribute("fill", "none");
             path.setAttribute("stroke-dasharray", "5,5");
-            path.setAttribute("id", "line");
+            path.setAttribute("class", "line");
 
             svgCanvas.appendChild(path);
+
+            // Create the text element
+            const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            text.setAttribute("x", (x1 + x2) / 2);
+            text.setAttribute("y", (y1 + y2) / 2);
+            text.setAttribute("text-anchor", "middle");
+            text.setAttribute("dominant-baseline", "middle");
+            text.setAttribute("fill", "black");
+            text.setAttribute("paint-order", "stroke");
+
+            if (durationText.includes('<BR>')) {
+                if (rerun == true) {
+                    text.textContent = durationText.split('<BR>')[0].trim()
+                } else {
+                    text.textContent = durationText.split('<BR>')[1].trim()
+                }
+            } else {
+                text.textContent = durationText;
+            }
+            text.setAttribute("class", "line-text");
+
+            svgCanvas.appendChild(text);
 
             // Create the plane element
             const plane = document.createElementNS("http://www.w3.org/2000/svg", "image");
             plane.setAttribute("href", "plane.png"); // change plane image
             plane.setAttribute("width", "50");
             plane.setAttribute("height", "50");
-            plane.setAttribute("id", "plane");
+            plane.setAttribute("class", "plane");
 
             svgCanvas.appendChild(plane);
 
@@ -691,9 +759,9 @@
             }
 
             animate(() => {
-                // Animation is complete, run the subsequent code
                 if (rerun == true) {
                     rerun = false;
+                    removePreviousLine("plane"); // Remove the text element after animation
                     animatePlaneFollowLine(x2, y2, re1, re2);
                 }
             });
